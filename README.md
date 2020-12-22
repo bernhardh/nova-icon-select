@@ -2,6 +2,19 @@
 
 This is a laravel nova field to select an icon from an icon set. The icon sets are defined by an `IconProvider`, so you can define your own set. The package has a predefined `IconProvider` for `FontAwesome 5 Free`.
 
+### Screenshots
+
+### Edit
+![Edit](https://raw.githubusercontent.com/bernhardh/nova-icon-select/master/docs/edit.gif)
+
+### Index
+
+![Index](https://raw.githubusercontent.com/bernhardh/nova-icon-select/master/docs/index.png)
+
+### Details
+
+![Detail](https://raw.githubusercontent.com/bernhardh/nova-icon-select/master/docs/detail.png)
+
 ## Installation
 
 Install this package with composer
