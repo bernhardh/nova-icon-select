@@ -1,6 +1,6 @@
 {
     "name": "bernhardh/nova-icon-select",
-    "description": "A Laravel Nova field.",
+    "description": "A larvel nova icon select field",
     "keywords": [
         "laravel",
         "nova"
