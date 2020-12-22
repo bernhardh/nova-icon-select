@@ -66,7 +66,47 @@ and now you can modify the `config/nova-icon-select/fontawesome.php` file as you
 
 ## Using with your own IconProvider
 
-To use your own icon set, you will need to create a new class and extend it from `Bernhardh\NovaIconSelect\IconProvider`. There you have to set the icons with the `setOptions` method inside the constructor
+To use your own icon set, you can either create your own `IconProvider` class and extend it from `Bernhardh\NovaIconSelect\IconProvider` or you can use `Bernhardh\NovaIconSelect\IconProvider` as an instance and add it your options directly.
+
+### Use instance and setOptions
+
+```php
+use Bernhardh\NovaIconSelect\NovaIconSelect;
+use Bernhardh\NovaIconSelect\IconProvider;
+
+NovaIconSelect::make("Icon")
+    ->setIconProvider(IconProvider::make()->setOptions([
+        [
+            'label' => 'Custom icon 1',
+            'value' => 'my-icons-1',
+            'search' => ['foo']
+        ],
+        [
+            'label' => 'Custom icon 2',
+            'value' => 'my-icons-2',
+        ],
+        [
+            'label' => 'Custom icon 2',
+            'value' => 'my-icons-3',
+            'search' => ['foo', 'bar']
+        ],
+    ]));
+```
+
+Or you can of course also move the options to a config file and get it with `config()`
+
+```php
+use Bernhardh\NovaIconSelect\NovaIconSelect;
+use Bernhardh\NovaIconSelect\IconProvider;
+
+NovaIconSelect::make("Icon", "icon")
+    ->setIconProvider(
+        IconProvider::make()->setOptions(config("iconset"))
+    );
+```
+
+
+### Use your own class
 
 ```php
 use Bernhardh\NovaIconSelect\IconProvider;
@@ -94,13 +134,6 @@ class MyCustomIconProvider extends IconProvider {
 }
 ```
 
-Each option consist of these fields:
-
-- `label`: Required string. This is the value which will be shown in nova and this value is used in the search (checks if label *contains* search string)
-- `value`: Required string. This is the actual icon class or identifier which will be stored to the database. In case of `FontAwesome`, this would be something like `fas fa-edit`
-- `search:`: Optional string array. This array is used in the search (checks if one of the strings *start with* the search string)
-- `unicode`: Optional string. Currently not used
-
 Now you can use it
 
 ```php
@@ -109,6 +142,27 @@ use Bernhardh\NovaIconSelect\NovaIconSelect;
 NovaIconSelect::make("Icon")
     ->setIconProvider(MyCustomIconProvider::class);
 ```
+
+## Options
+
+Example:
+
+```php
+[
+    'label' => 'Custom icon 1',
+    'value' => 'my-icons-1',
+    'search' => ['foo', 'bar']
+]
+```
+
+Each option consist of these fields:
+
+- `label`: Required string. This is the value which will be shown in nova and this value is used in the search (checks if label *contains* search string)
+- `value`: Required string. This is the actual icon class or identifier which will be stored to the database. In case of `FontAwesome`, this would be something like `fas fa-edit`
+- `search:`: Optional string array. This array is used in the search (checks if one of the strings *start with* the search string)
+- `unicode`: Optional string. Currently not used
+
+Of course you can move the options to a config file as I did with the `FontAwesomeIconProvider`
 
 ## Changelog
 
