@@ -33,9 +33,9 @@ For `FontAwesome` you can do this like this:
 
 Of course, you can also host the icon-set on your server or even use completly different icons.
 
-## Using
+## Usage
 
-Like every other field, you can use the field inside your Nova Resource. You will need to provide an `IconProvider`. Either use the build in `FontAwesomeIconProvider` or create your own.
+Like every other field, you can use the field inside your Nova Resource. You will need to provide an `IconProvider`. Either use the build in `FontAwesomeIconProvider` or use an instance of `IconProvider` or create your own.
 
 ```php
 use Bernhardh\NovaIconSelect\NovaIconSelect;
@@ -56,7 +56,7 @@ NovaIconSelect::make("Icon")
     ->setIconProvider(FontAwesomeIconProvider::class);
 ```
 
-If you want to change the labels, remove icons or add search tags, you can publishe the config:
+If you want to change the labels, remove icons or add search tags, you can publish the config:
 
 ```
 php artisan vendor:publish --provider="Bernhardh\NovaIconSelect\FieldServiceProvider"
@@ -64,9 +64,9 @@ php artisan vendor:publish --provider="Bernhardh\NovaIconSelect\FieldServiceProv
 
 and now you can modify the `config/nova-icon-select/fontawesome.php` file as you like.
 
-## Using with your own IconProvider
+## Using with your own icon sets
 
-To use your own icon set, you can either create your own `IconProvider` class and extend it from `Bernhardh\NovaIconSelect\IconProvider` or you can use `Bernhardh\NovaIconSelect\IconProvider` as an instance and add it your options directly.
+To use your own icon set, you can either create your own `IconProvider` class and extend it from `Bernhardh\NovaIconSelect\IconProvider` or you can use `Bernhardh\NovaIconSelect\IconProvider` as an instance and add your options directly.
 
 ### Use instance and setOptions
 
