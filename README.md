@@ -1,4 +1,4 @@
-# Nova Translation Editor
+# Nova Icon Select
 
 This is a laravel nova field to select an icon from an icon set. The icon sets are defined by an `IconProvider`, so you can define your own set. The package has a predefined `IconProvider` for `FontAwesome 5 Free`.
 
